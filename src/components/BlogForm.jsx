@@ -6,16 +6,16 @@ function BlogForm({ show, onHide }) {
         <div>
             <Modal show={show} onHide={onHide} centered>
                 <Modal.Header closeButton>
-                    <Modal.Title>Submit Blog</Modal.Title>
+                    <Modal.Title>Add Blog</Modal.Title>
                 </Modal.Header>
                 <Form>
                     <Modal.Body>
                         <Form.Group className="mb-2">
-                            <Form.Label>Blog Title</Form.Label>
+                            <Form.Label>Title</Form.Label>
                             <Form.Control type="text" />
                         </Form.Group>
                         <Form.Group className="mb-2">
-                            <Form.Label>Your Name</Form.Label>
+                            <Form.Label>Auther</Form.Label>
                             <Form.Control
                                 type="text"
                                 // value={user}
@@ -25,9 +25,9 @@ function BlogForm({ show, onHide }) {
                             />
                         </Form.Group>
                         <Form.Group className="mb-2">
-                            <Form.Label>Your Review</Form.Label>
+                            <Form.Label>Content</Form.Label>
                             <Form.Control
-                                as="textarea"
+                                as="textarea"1
                                 // value={review}
                                 // onChange={(e) => setReview(e.target.value)}
                                 required
