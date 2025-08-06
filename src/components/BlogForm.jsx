@@ -27,7 +27,7 @@ function BlogForm({ show, onHide }) {
                         <Form.Group className="mb-2">
                             <Form.Label>Content</Form.Label>
                             <Form.Control
-                                as="textarea"1
+                                as="textarea"
                                 // value={review}
                                 // onChange={(e) => setReview(e.target.value)}
                                 required
