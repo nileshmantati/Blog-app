@@ -7,9 +7,9 @@ import Home from './pages/Home';
 import BlogDetail from './pages/BlogDetail';
 
 function App() {
+  const [blogs, setBlogs] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [editData, setEditData] = useState(null);
-  const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
     const storedBlogs = JSON.parse(localStorage.getItem("blogs")) || [];
@@ -44,7 +44,7 @@ function App() {
       <Router>
         <Header onOpenModal={openModal} editData={editData} />
         <Routes>
-          <Route path="/" element={<Home onEdit={handleEdit} />} />
+          <Route path="/" element={<Home blogs={blogs} onEdit={handleEdit} />} />
           <Route path="/blog/:id" element={<BlogDetail />} />
         </Routes>
         <BlogForm

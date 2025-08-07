@@ -1,15 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import BlogCard from "../components/BlogCard";
 
-function Home({ editData, onEdit }) {
-    const [blogs, setBlogs] = useState([]);
-
-    // Load blogs from localStorage on mount
-    useEffect(() => {
-        const storedBlogs = JSON.parse(localStorage.getItem("blogs")) || [];
-        setBlogs(storedBlogs);
-    }, []);
-
+function Home({ blogs, onEdit }) {
     return (
         <div className="container mt-4">
             <div className="d-flex justify-content-between align-items-center mb-3">

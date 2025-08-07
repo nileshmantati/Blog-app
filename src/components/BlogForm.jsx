@@ -34,7 +34,8 @@ function BlogForm({ show, onHide, onSave, editData }) {
         <div>
             <Modal show={show} onHide={onHide} centered>
                 <Modal.Header closeButton>
-                    <Modal.Title>Add Blog</Modal.Title>
+                    <Modal.Title>{editData ? "Edit Blog" : "Add Blog"}</Modal.Title>
+
                 </Modal.Header>
                 <Form onSubmit={handleSubmit}>
                     <Modal.Body>
@@ -69,7 +70,7 @@ function BlogForm({ show, onHide, onSave, editData }) {
                     <Modal.Footer>
                         <Button variant="secondary" onClick={onHide}>Cancel</Button>
                         <Button type="submit" variant="primary">
-                            Submit Blog
+                            {editData ? "Edit Blog" : "Submit Blog"}
                         </Button>
                     </Modal.Footer>
                 </Form>
