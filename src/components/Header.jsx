@@ -7,19 +7,21 @@ import Navbar from 'react-bootstrap/Navbar';
 function Header({ onOpenModal }) {
     return (
         <div>
-            <Navbar expand="lg" className="bg-body-tertiary">
+            <Navbar expand="lg" className=" bg-body-secondary">
                 <Container>
                     <Navbar.Brand href="#home">BlogApp</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="ms-auto">
                             <NavLink to='/'>Home</NavLink>
-                            <NavLink to='' onClick={() => onOpenModal()}>Create Blog</NavLink>
+                            <NavLink to='' onClick={() => {
+                                onOpenModal();
+                            }}>Create Blog</NavLink>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-        </div>
+        </div >
     )
 }
 

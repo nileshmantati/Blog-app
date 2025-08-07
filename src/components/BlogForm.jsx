@@ -1,35 +1,67 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 
-function BlogForm({ show, onHide }) {
+function BlogForm({ show, onHide, onSave, editData }) {
+    const [title, setTitle] = useState("");
+    const [author, setAuthor] = useState("");
+    const [content, setContent] = useState("");
+
+    useEffect(() => {
+        if (editData) {
+            setTitle(editData.title || "");
+            setAuthor(editData.author || "");
+            setContent(editData.content || "");
+        } else {
+            setTitle("");
+            setAuthor("");
+            setContent("");
+        }
+    }, [editData, show]);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const blog = {
+            id: editData?.id || Date.now(),
+            title,
+            author,
+            content,
+            date: new Date().toLocaleDateString(),
+        };
+        onSave(blog);
+        onHide();
+    };
     return (
         <div>
             <Modal show={show} onHide={onHide} centered>
                 <Modal.Header closeButton>
                     <Modal.Title>Add Blog</Modal.Title>
                 </Modal.Header>
-                <Form>
+                <Form onSubmit={handleSubmit}>
                     <Modal.Body>
                         <Form.Group className="mb-2">
                             <Form.Label>Title</Form.Label>
-                            <Form.Control type="text" />
+                            <Form.Control
+                                type="text"
+                                value={title}
+                                onChange={(e) => setTitle(e.target.value)}
+                                required
+                            />
                         </Form.Group>
                         <Form.Group className="mb-2">
                             <Form.Label>Auther</Form.Label>
                             <Form.Control
                                 type="text"
-                                // value={user}
-                                // onChange={(e) => setUser(e.target.value)}
+                                value={author}
+                                onChange={(e) => setAuthor(e.target.value)}
                                 required
-                            // disabled={isEditMode}
                             />
                         </Form.Group>
                         <Form.Group className="mb-2">
                             <Form.Label>Content</Form.Label>
                             <Form.Control
                                 as="textarea"
-                                // value={review}
-                                // onChange={(e) => setReview(e.target.value)}
+                                value={content}
+                                onChange={(e) => setContent(e.target.value)}
                                 required
                             />
                         </Form.Group>
